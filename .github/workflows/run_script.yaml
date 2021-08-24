@@ -16,11 +16,13 @@ jobs:
   steps:
     - name: checkout repo content
       uses: actions/checkout@v2
-      
+
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
 
+    - name: execute py script # run sj-gobierno.py to get the latest data
+
     - name: execute py script
-    run: python Hello_world.py
+      run: python Hello_world.py
