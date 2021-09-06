@@ -22,21 +22,15 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-      - name: npm install and build
-        run: |
-          npm ci
-          npm run build --if-present
-        env:
-          CI: true
       - name: zip
         uses: montudor/action-zip@v0.1.0
         with:
-          args: zip -qq -r ./bundle.zip ./
+          args: zip -qq -r ./test.zip ./
       - name: default deploy
         uses: appleboy/lambda-action@master
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws_region: us-east-1
+          aws_region: eu-central-1
           function_name: HelloWorld
-          zip_file: bundle.zip
+          zip_file: test.zip
