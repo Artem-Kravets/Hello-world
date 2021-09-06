@@ -2,5 +2,5 @@ import json
 
 
 def lambda_handler(event, context):
-    greetings = "Hello AWS"
+    greetings = "Hello World"
     return greetings
