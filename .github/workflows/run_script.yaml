@@ -22,8 +22,12 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-#     - name: execute py script
-#       run: python Hello_world.py
+      - name: npm install and build
+        run: |
+          npm ci
+          npm run build --if-present
+        env:
+          CI: true
       - name: zip
         uses: montudor/action-zip@v0.1.0
         with:
